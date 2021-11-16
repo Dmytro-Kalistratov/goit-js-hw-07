@@ -25,6 +25,9 @@ galleryElem.insertAdjacentHTML('beforeend', galleryMarkup);
 
 function zoomImage(event) {
   event.preventDefault();
+  if (event.target.nodeName !== "IMG") {
+    return;
+  };
 
   const currentImage = event.target.getAttribute("data-source");
 
