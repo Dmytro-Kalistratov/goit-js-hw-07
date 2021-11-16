@@ -30,8 +30,9 @@ function zoomImage(event) {
   };
 
   const currentImage = event.target.getAttribute("data-source");
+  const currentAlt = event.target.getAttribute('alt');
 
-  const modalImage = basicLightbox.create(`<img src=${currentImage} width="1200">`)
+  const modalImage = basicLightbox.create(`<img src=${currentImage} width="1200" alt="${currentAlt}">`)
   modalImage.show();
 
   document.addEventListener('keydown', (event) => { if(event.code === "Escape") {  modalImage.close() }});
