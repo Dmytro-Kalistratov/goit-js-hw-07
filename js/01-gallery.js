@@ -32,13 +32,17 @@ function zoomImage(event) {
   const currentImage = event.target.getAttribute("data-source");
   const currentAlt = event.target.getAttribute('alt');
 
-  const modalImage = basicLightbox.create(`<img src=${currentImage} width="1200" alt="${currentAlt}">`)
+  const modalImage = basicLightbox.create(`<img src=${currentImage} width="1200" alt="${currentAlt}">`, {
+    onClose: (modalImage) => {
+      document.removeEventListener('keydown', closeModal);
+    }
+  })
   modalImage.show();
 
   const closeModal = (event) => {
     if (event.code === "Escape") {
-      modalImage.close();
       document.removeEventListener('keydown', closeModal);
+      modalImage.close();
     };
   };
 
